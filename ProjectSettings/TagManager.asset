@@ -3,15 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - coin
+  - Projectible
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Coin
   - Water
   - UI
-  - 
+  - fondo
   - 
   - 
   - 
@@ -40,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Estella
+    uniqueID: 718534377
+    locked: 0
+  - name: Asteroide
+    uniqueID: 1634064643
     locked: 0
