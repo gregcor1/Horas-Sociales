@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class generadormeteorito : MonoBehaviour
 {
-   /* public GameObject prefabAsteroide;
-    private float randomX;
-    private float randomY;
-    // Start is called before the first frame update
+    public GameObject prefabAsteroide; // Prefab del meteorito
+    private int asteroidesEnJuego; // Contador de meteoritos en juego
+
     void Start()
     {
-        CrearAsteroide();
+        asteroidesEnJuego = 0; // Inicializar el contador de meteoritos en juego
+        StartCoroutine(oleadaAsteroides()); // Comenzar la rutina de generación de meteoritos
     }
 
+    // Método para crear un meteorito
     public void CrearAsteroide()
     {
-    
-
-        for (int i = 0; i < 5; i++)
+        float randomY;
+        for (int i = 0; i < 5; i++) // Generar 12 meteoritos en cada ciclo
         {
-        randomX = Random.Range(-0.75f,0,0.75f);
-        randomY = Random.Range(-0.75f,0,0.75f);
-        GameObject a = Instantiate(prefabAsteroide) as GameObject;
-        a.transform.position = new Vector3(randomX,randomY,0);
-
+            randomY = Random.Range(-3.25f, 3.25f); // Generar una posición Y aleatoria
+            GameObject a = Instantiate(prefabAsteroide) as GameObject; // Instanciar un nuevo meteorito
+            a.transform.position = new Vector3(10f, randomY, 0); // Establecer la posición del meteorito
+            a.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-100f, 5f)); // Aplicar fuerza al meteorito
+            asteroidesEnJuego++; // Incrementar el contador de meteoritos en juego
         }
-    }*/
+    }
+
+    // Rutina para generar meteoritos continuamente
+    System.Collections.IEnumerator oleadaAsteroides()
+    {
+        while (true) // Bucle infinito
+        {
+            yield return new WaitForSeconds(2.5f); // Esperar 1 segundo antes de generar la siguiente oleada
+            CrearAsteroide(); // Generar una nueva oleada de meteoritos
+        }
+    }
 }
